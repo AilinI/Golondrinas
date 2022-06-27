@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'golondrina';
+    src: url('./Birds\ of\ Paradise\ ©\ PERSONAL\ USE\ ONLY.ttf');
+}
+
+body {
+    background-image: url(./React/assets/fondo.fdadac51.webp);
+    background-repeat: no-repeat;
+    height: 100vh;
+    
+}
+h1{
+    font-family: 'golondrina';
+    font-size: 5rem !important;
+    color: #2e3192; color: -moz-linear-gradient(to right,  #2e3192 1%,#1bffff 100%); color: -webkit-linear-gradient(to right,  #2e3192 1%,#1bffff 100%); color: linear-gradient(to right,  #2e3192 1%,#1bffff 100%);
+    text-shadow: 1px 1px 2px black;
+    text-align: center;
+    padding-top: 30px;
+}
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}
+
+.ancho45{
+    width: 45px;
+    /* height: 100%; */
+}
+
+.ancho50{
+    width: 50%;
+}
+
+
+.imagen-golondrina img{
+    max-width: 30%;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+#barra-triste {
+    color: black;
+    font-weight: 600;
+}
+
+.transicion{
+    transition: all 3s;
+}
+
+/* .vidrio{
+    background: rgba(255, 255, 255, 0.133) !important;
+    backdrop-filter: blur(3px) !important;
+    box-shadow: 0 0 6px 0 rgba(29,29,29, 0.203) !important;
+    z-index: 999;
+} */
