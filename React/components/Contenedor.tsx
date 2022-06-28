@@ -4,7 +4,7 @@ import {Comidas} from './Comidas';
 import {Volar} from './Volar';
 import {HaceLoQueQuieras} from './HaceLoQueQuieras';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Golondrina } from '../../golondrinaMagia';
+import { Golondrina } from '../../golondrina';
 
 
 export const Contenedor = () => {

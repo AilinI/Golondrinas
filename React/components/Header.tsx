@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { Golondrina } from '../../golondrinaMagia';
+import { Golondrina } from '../../golondrina';
 import { Alert, Button, Card, ProgressBar } from 'react-bootstrap';
 import { AlertaQueSeEsconde } from './AlertaGolondrina'
 export interface HeaderProps{

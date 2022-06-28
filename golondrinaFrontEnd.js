@@ -1,4 +1,4 @@
-import { alpiste, alcaucil, mondongo, Golondrina } from "./golondrinaMagia.js";
+import { alpiste, alcaucil, mondongo, Golondrina } from "./golondrina.ts";
 
 // Nace la golondrina
 // llamando de HTML

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Golondrina, alcaucil, mondongo, alpiste } from '../../golondrinaMagia';
+import { Golondrina, alcaucil, mondongo, alpiste } from '../../golondrina';
 import { Card, Button, Form } from 'react-bootstrap';
 
 interface ComidaProps{

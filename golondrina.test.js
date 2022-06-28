@@ -1,84 +1,73 @@
-import { alpiste, alcaucil, mondongo } from './comidas';
-import { Golondrina } from './golondrina';
+import { Golondrina, alpiste, alcaucil, mondongo } from "./golondrina"
 
-test('las golondrinas nacen con 45 joules de energía', () => {
-    const unaGolondrinaRecienNacida = new Golondrina();
+test("Nacimiento de golondrina con 45 joules de energia", () => {
+    const golondrinaCreada = new Golondrina(45);
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(45)
+});
+test("Golondrina bebé, come un gramo de alpiste por primera vez", () => {
+    const golondrinaCreada = new Golondrina(45);
+    golondrinaCreada.comer(1, alpiste)
 
-    expect(unaGolondrinaRecienNacida.energiaEnJoules()).toEqual(45);
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(49)
+});
+test("Golondrina bebé, come  dos gramos de alcaucil por primera vez", () => {
+    const golondrinaCreada = new Golondrina(45);
+    golondrinaCreada.comer(2, alcaucil)
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(85)
+});
+test("Golondrina bebé vuela 1 kilometro", () => {
+    const golondrinaCreada = new Golondrina(45);
+    golondrinaCreada.volarKm(1)
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(34)
+});
+test("Golondrina bebé vuela 5 kilometros", () => {
+    const golondrinaCreada = new Golondrina(45);
+    golondrinaCreada.volarKm(5)
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(30)
+});
+test('Golondrina bebé se alimenta 2 gramos mondongo y vuela 10 kilometros', () => {
+    const golondrinaCreada = new Golondrina(45);
+    golondrinaCreada.comer(2, mondongo)
+    golondrinaCreada.volarKm(10)
+
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(225);
+});
+test('Golondrina bebé se alimenta 3 gramos de alcaucil, vuela 20 kilometros, y se vuelve a alimentar 5 gramos de alpiste', () => {
+    const golondrinaCreada = new Golondrina(45);
+    golondrinaCreada.comer(3, alcaucil)
+    golondrinaCreada.volarKm(20)
+    golondrinaCreada.comer(5, alpiste)
+
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(95);
+});
+test('Golondrina bebé vuela 35 km sin comer ', () => {
+    const golondrinaCreada = new Golondrina(45);
+    golondrinaCreada.volarKm(35)
+
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(0);
 });
 
-test('cuando una golondrina come alpiste, aumenta su energía 4 joules por gramo que come', () => {
-    const unaGolondrina = new Golondrina(0);
 
-    unaGolondrina.comerGramosDeComida(2, alpiste);
+test('Se le pide realizar un vuelo que excede su energía y lanza un error', () => {
+    const golondrinaCreada = new Golondrina(45);
 
-    expect(unaGolondrina.energiaEnJoules()).toEqual(2 * 4);
+    expect(() => {
+        golondrinaCreada.volarKm(45);
+    }).toThrowError('sin energia');
+  });
+
+  test("Golondrina bebé, come un gramo de alpiste por primera vez y luego hace lo que quiera", () => {
+    const golondrinaCreada = new Golondrina(45);
+    golondrinaCreada.comer(1, alpiste)
+    golondrinaCreada.haceLoQueQuieras()
+
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(129)
 });
+test("Golondrina bebé, come 5 gramos de mondongo y luego hace lo que quiera", () => {
+    const golondrinaCreada = new Golondrina(45);
 
-test('cuando una golondrina come alcaucil, aumenta su energía 20 joules por gramo que come', () => {
-    const unaGolondrina = new Golondrina(0);
+    golondrinaCreada.comer(5, mondongo);
+    golondrinaCreada.haceLoQueQuieras()
 
-    unaGolondrina.comerGramosDeComida(3, alcaucil);
-
-    expect(unaGolondrina.energiaEnJoules()).toEqual(3 * 20);
-});
-
-test('cuando una golondrina come mondongo, aumenta su energía 100 joules por gramo que come', () => {
-    const unaGolondrina = new Golondrina(0);
-
-    unaGolondrina.comerGramosDeComida(3, mondongo);
-
-    expect(unaGolondrina.energiaEnJoules()).toEqual(3 * 100);
-});
-
-test('cuando una golondrina vuela, gasta un joule por cada kilómetro volado, mas 10 joules fijos', () => {
-    const unaGolondrina = new Golondrina(100);
-
-    unaGolondrina.volarKilometros(5);
-
-    expect(unaGolondrina.energiaEnJoules()).toEqual(100 - 5 - 10);
-});
-
-// Ejercicio: renombrar los tests que vienen a continuación, y considerar qué casos borde faltarían testear (e implementar).
-
-test('[renombrar] test 01', () => {
-    const unaGolondrinaDébil = new Golondrina(49);
-
-    unaGolondrinaDébil.hacéLoQueQuieras();
-
-    expect(unaGolondrinaDébil.energiaEnJoules()).
-        toEqual(49 + alpiste.energiaEnJoulesAportadaPor(20));
-});
-
-test('[renombrar] test 02', () => {
-    const unaGolondrinaIndiferente = new Golondrina(50);
-
-    unaGolondrinaIndiferente.hacéLoQueQuieras();
-
-    expect(unaGolondrinaIndiferente.energiaEnJoules()).toEqual(50);
-});
-
-test('[renombrar] test 03', () => {
-    const unaGolondrinaFeliz = new Golondrina(501);
-
-    unaGolondrinaFeliz.hacéLoQueQuieras();
-
-    expect(unaGolondrinaFeliz.energiaEnJoules()).
-        toEqual(501 - 5 - 10);
-});
-
-test('[renombrar] test 04', () => {
-    const unaGolondrinaIndiferente = new Golondrina(500);
-
-    unaGolondrinaIndiferente.hacéLoQueQuieras();
-
-    expect(unaGolondrinaIndiferente.energiaEnJoules()).toEqual(500);
-});
-
-test('una golondrina no puede volar si no le alcanza la energía para hacerlo', () => {
-    const unaGolondrina = new Golondrina(10);
-
-    expect(() => unaGolondrina.volarKilometros(1)).
-        toThrow("no tengo energía para volar");
-    expect(unaGolondrina.energiaEnJoules()).toEqual(10);
+    expect(golondrinaCreada.energiaDeGolondrinaEnJoules()).toEqual(530)
 });
