@@ -33,7 +33,7 @@ export class Golondrina {
     }
 
     estadoDeAnimo(){
-        if(this._energiaEnJoules <= 45){
+        if(this._energiaEnJoules <= 50){
             return 'Triste'
           }else if(this._energiaEnJoules >= 500){
               return 'Feliz'
@@ -58,3 +58,8 @@ export class Golondrina {
         }
     }
 
+    export const mapaDeComidas = new Map([
+        ["alpiste", alpiste],
+        ["mondongo", mondongo],
+        ["alcaucil", alcaucil]
+    ])

@@ -1,3 +1,4 @@
+import { error } from "console";
 import { Golondrina, alpiste, alcaucil, mondongo } from "./golondrina"
 
 test("Nacimiento de golondrina con 45 joules de energia", () => {
@@ -53,7 +54,7 @@ test('Se le pide realizar un vuelo que excede su energía y lanza un error', () 
 
     expect(() => {
         golondrinaCreada.volarKm(45);
-    }).toThrowError('sin energia');
+    }).toThrowError(Error.message);
   });
 
   test("Golondrina bebé, come un gramo de alpiste por primera vez y luego hace lo que quiera", () => {
