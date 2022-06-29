@@ -1,6 +1,5 @@
 import cors from 'cors';
 import express, { ErrorRequestHandler } from 'express';
-import { ErrorInfo } from 'react';
 import { alcaucil, alpiste, Golondrina, mapaDeComidas, mondongo } from '../golondrina';
 
 export function crearServidor() {

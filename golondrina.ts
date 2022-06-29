@@ -64,4 +64,3 @@ export const mapaDeComidas = new Map([
     ["mondongo", mondongo],
     ["alcaucil", alcaucil]
 ])
-
