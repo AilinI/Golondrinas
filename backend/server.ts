@@ -1,10 +1,11 @@
 import cors from 'cors';
 import express, { ErrorRequestHandler } from 'express';
-import { Golondrina, mapaDeComidas } from '../golondrina';
+import { ErrorInfo } from 'react';
+import { alcaucil, alpiste, Golondrina, mapaDeComidas, mondongo } from '../golondrina';
 
 export function crearServidor() {
     const golondrina = new Golondrina(45)
-    return express().
+    return express().                                                                                              
     use(cors()).
     use(express.json()).
     get("/golondrina", (peticion, respuesta) => {
@@ -14,9 +15,11 @@ export function crearServidor() {
         })
     }).
     post("/golondrina/comer", (peticion, respuesta) => {
+        const comidaElegida = mapaDeComidas.get(peticion.body.comidaDeGolondrina);
+        validarComida(comidaElegida);
         golondrina.comer(
             peticion.body.cantidadComidaEnGramos, 
-            mapaDeComidas.get(peticion.body.comidaDeGolondrina))
+            comidaElegida)
             respuesta.json(estadoDeGolondrina(golondrina));
     }).
     post("/golondrina/volar", (peticion, respuesta) => {
@@ -27,7 +30,10 @@ export function crearServidor() {
     post("/golondrina/haceLoQueQuieras", (peticion, respuesta) => {
         golondrina.haceLoQueQuieras()
             respuesta.json(estadoDeGolondrina(golondrina))        
-    })
+    }). 
+    use(((error: Error, peticion, respuesta, next) => {
+        respuesta.status(400).json({error: error.message});
+    } ) as ErrorRequestHandler)
 }
 
 function estadoDeGolondrina(golondrina: Golondrina): any {
@@ -35,4 +41,9 @@ function estadoDeGolondrina(golondrina: Golondrina): any {
         energia: golondrina.energiaDeGolondrinaEnJoules(),
         estado: golondrina.estadoDeAnimo()
     };
+}
+function validarComida(comida) {
+    if(comida != (alpiste||mondongo||alcaucil)){
+        throw new Error("Comida inválida")
+    }
 }

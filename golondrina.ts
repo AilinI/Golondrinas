@@ -42,24 +42,26 @@ export class Golondrina {
         }
     }
 }
-    export const alpiste = {
-        energiaParaGramos(cantidadComidaEnGramos) {
-            return cantidadComidaEnGramos * 4;
-        }
-    }
-    export const alcaucil = {
-        energiaParaGramos(cantidadComidaEnGramos) {
-            return cantidadComidaEnGramos * 20;
-        }
-    }
-    export const mondongo = {
-        energiaParaGramos(cantidadComidaEnGramos) {
-            return cantidadComidaEnGramos * 100;
-        }
-    }
 
-    export const mapaDeComidas = new Map([
-        ["alpiste", alpiste],
-        ["mondongo", mondongo],
-        ["alcaucil", alcaucil]
-    ])
+export const alpiste = {
+    energiaParaGramos(cantidadComidaEnGramos) {
+        return cantidadComidaEnGramos * 4;
+    }
+}
+export const alcaucil = {
+    energiaParaGramos(cantidadComidaEnGramos) {
+        return cantidadComidaEnGramos * 20;
+    }
+}
+export const mondongo = {
+    energiaParaGramos(cantidadComidaEnGramos) {
+        return cantidadComidaEnGramos * 100;
+    }
+}
+
+export const mapaDeComidas = new Map([
+    ["alpiste", alpiste],
+    ["mondongo", mondongo],
+    ["alcaucil", alcaucil]
+])
+
